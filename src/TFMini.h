@@ -64,7 +64,7 @@ public:
   void setMeasurementMode(MODE _mode);
   void setRangeLimit(uint16_t range);
   void setSignalThreshold(uint8_t min, uint16_t max);
-
+  void setOutputCycle(uint16_t time);
   // Data collection
   uint16_t getDistance();
   uint16_t getRecentSignalStrength();

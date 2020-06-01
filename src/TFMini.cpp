@@ -201,6 +201,22 @@ void TFMini::setRangeLimit(uint16_t range) {
   unsetConfigMode();
 }
 
+void TFMini::setOutputCycle(uint16_t time) {
+  setConfigMode();
+
+  streamPtr->write((uint8_t)0x42);
+  streamPtr->write((uint8_t)0x57);
+  streamPtr->write((uint8_t)0x02);
+  streamPtr->write((uint8_t)0x00);
+  streamPtr->write((uint8_t)(time & 0xff));
+  streamPtr->write((uint8_t)((time >> 8) & 0xff));
+  streamPtr->write((uint8_t)0x00); 
+  streamPtr->write((uint8_t)0x07);
+
+  delay(100);
+
+  unsetConfigMode();
+}
 // Set maximum distance
 void TFMini::setSignalThreshold(uint8_t min, uint16_t max) {
   setConfigMode();
